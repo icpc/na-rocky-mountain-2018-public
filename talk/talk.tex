@@ -1,0 +1,183 @@
+\documentclass{beamer}
+\mode<presentation>
+{
+\usetheme{Warsaw}
+% \setbeamercovered{transparent}
+}
+\usepackage{amsmath,amsfonts,array,eepic,graphics}
+%\newcolumntype{d}{D{.}{.}{-1}}
+\usepackage{times}
+%\usepackage[T1]{fontenc}
+\usepackage{subfigure}
+\title[RMRC 2018 Solution Sketches]
+{2018 Rocky Mountain Regional \\ Programming Contest \\ \ \\ Solution Sketches}
+%\author % (optional, use only with lots of authors)
+%{Howard Cheng}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+\date
+{}
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%\AtBeginSubsection[]
+%{
+% \begin{frame}<beamer>
+% \frametitle{Outline}
+% \tableofcontents[currentsection,currentsubsection]
+% \end{frame}
+%}
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+%\beamerdefaultoverlayspecification{<+->}
+
+
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+\begin{frame}
+\frametitle{Credits}
+\begin{itemize}
+\setlength\itemsep{0.5\baselineskip}
+\item Howard Cheng
+\item Brandon Fuller
+\item Darcy Best
+\item Zachary Friggstad
+\item Christopher Painter-Wakefield
+\item Darko Aleksic
+\item Warren MacEvoy
+\item Greg Hamerly
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{A - Quality-Adjusted Life-Year (63/72)}
+\begin{itemize}
+\setlength\itemsep{0.5\baselineskip}
+\item Simple, do what is asked of you.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{D - H-Index (36/246)}
+\begin{itemize}
+  \setlength\itemsep{0.5\baselineskip}
+\item Find the maximum $h$ such that there are at least $h$ values that are at least $h$.
+\item Sort the array (largest to smallest)
+\item For each $h$ (from $0$ to $n$), the largest $h$ numbers are at the beginning of the array, so just check if the $h$-th value is at least $h$.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{G - Neighborhood Watch (36/141)}
+\begin{itemize}
+\setlength\itemsep{0.5\baselineskip}
+\item How many intervals contain a ``special'' house?
+\item Count the number of bad paths and subtract from total number of intervals.
+\item Look at the size of the gaps between special houses.
+\item If the gap has $g$ houses, then the number of bad paths in that gap is $g(g+1)/2$.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{H - Small Schedule (35/114)}
+\begin{itemize}
+\setlength\itemsep{0.5\baselineskip}
+\item Bin packing with two sizes
+\item Fill with large ones, then with $1$'s
+\item Be careful of off-by-one errors
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{C - Forest for the Trees (14/86)}
+\begin{itemize}
+\setlength\itemsep{0.5\baselineskip}
+\item Which trees can obstruct the view?
+\item $(k*x_b/g,k*y_b/g)$ where $g=gcd(x_b,y_b)$ is the next tree in the way.
+\item Look at the values of $k$ such that the corresponding trees are in the rectangle.
+\item Can be done in constant time by looking at linear inequalities.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{E - Driving Lanes (5/9)}
+\begin{itemize}
+\setlength\itemsep{0.5\baselineskip}
+\item Dynamic programming
+\item Define $f(n,L) = $ the shortest distance to drive the first $n$ straightaways and be in lane $L$.
+\item For each state, try changing to each of the other lanes (if possible).
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{I - Mr. Plow King (5/14)}
+\begin{itemize}
+\setlength\itemsep{0.3\baselineskip}
+\item How to maximize the minimum spanning tree?
+\item Kruskal's algorithm tells us that we should greedily take the shortest edge if it doesn't create a cycle.
+\item You \textit{must} include edges 1 and 2. The only way to not include edge 3 is to make a triangle (with 1, 2, 3).
+\item Then you \textit{must} include edge 4. To not use edge 5 and 6, connect those edges into your connected component.
+\item Then you \textit{must} include edge 7. Etc.
+\item At some point, you can use all remaining edges in the MST. Put them in a path.
+\item In general:
+  \begin{itemize}
+   \item Make a giant connected component with lots of small edges.
+   \item Make a long path of large edges.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{J - Rainbow Road Race (3/3)}
+\begin{itemize}
+\setlength\itemsep{0.5\baselineskip}
+\item Travel through edges to get colors. Return to the start location with all colors with the shortest travel time.
+\item Create a new graph where the nodes are the pair: (location, set of colors you have).
+\item For each edge (from location $i$ to $j$) create an edge from $(i, S)$ to $(j, S \cup \{$color of edge$ \})$ for all possible color sets $S$.
+\item Run a shortest path algorithm from $(1, \{ \})$ to $(1, \{ R,O,Y,G,B,I,V \} )$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{B - Gwen's Gift (2/10)}
+\begin{itemize}
+\setlength\itemsep{0.5\baselineskip}
+\item There are $(n-1)!$ valid sequences, for each first element there are $(n-2)!$ valid sequences and so on
+\item Keep track of the sums modulo $n$.
+\item For each position, go from $1$ to $n-1$ skipping the \textit{invalid} elements until you get to the desired index
+\item An element is invalid if (a) the prefix sum is $0$ or (b) we have already seen the prefix sum (both mod $n$)
+\item $20! > 10^{18}$ - we care only about the last $20$ elements, the rest are all $1$'s
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{B - Gwen's Gift (2/10) (...continued...)}
+\begin{itemize}
+\setlength\itemsep{0.5\baselineskip}
+\item Another way to think about the problem: the partial sums of the
+  array (modulo $n$) are non-zero and distinct.
+\item So the partial sums modulo $N$ form a permutation of $1, 2, \ldots, n-1$.
+\item Generate the $k$th permutation (but order based on the original sequence).
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{F - Treasure Spotting (0/23)}
+\begin{itemize}
+\setlength\itemsep{0.5\baselineskip}
+\item Relatively simple geometry, most cases covered in samples
+\item Line segment intersection
+\item Use integer arithmetic (do \textbf{not} use floating point)
+\end{itemize}
+\end{frame}
+
+\end{document}
