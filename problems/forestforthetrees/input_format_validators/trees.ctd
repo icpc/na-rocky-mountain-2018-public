@@ -1,0 +1,6 @@
+SET(max = 1000000000000)
+INT(1,max) SPACE INT(1,max) NEWLINE
+INT(1,max,x1) SPACE INT(1,max,y1) SPACE INT(1,max,x2) SPACE INT(1,max,y2) NEWLINE
+ASSERT(x1 <= x2)
+ASSERT(y1 <= y2)
+EOF

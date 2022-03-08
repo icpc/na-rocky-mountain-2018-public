@@ -1,0 +1,16 @@
+# doesn't check connectedness or every colour appears at least once
+SET(minn = 7)
+SET(maxn = 343)
+SET(minm = 7)
+SET(maxm = 2401)
+SET(mind = 1)
+SET(maxd = 16807)
+
+INT(minn, maxn, n) SPACE INT(minm, maxm, m) NEWLINE
+REPI(i, m)
+  INT(1, n, l1[i]) SPACE INT(1, n, l2[i]) SPACE INT(1, maxd, d) SPACE REGEX("[ROYGBIV]", color) NEWLINE
+  ASSERT(l1[i] < l2[i])
+END
+ASSERT(UNIQUE(l1,l2))
+EOF
+

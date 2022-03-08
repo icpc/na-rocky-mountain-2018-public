@@ -1,0 +1,23 @@
+% \usepackage[usenames,dvipsnames]{pstricks}
+% \usepackage{epsfig}
+% \usepackage{pst-grad} % For gradients
+% \usepackage{pst-plot} % For axes
+% \usepackage[space]{grffile} % For spaces in paths
+% \usepackage{etoolbox} % For spaces in paths
+% \makeatletter % For spaces in paths
+% \patchcmd\Gread@eps{\@inputcheck#1 }{\@inputcheck"#1"\relax}{}{}
+% \makeatother
+% % User Packages:
+% 
+% 
+
+\psscalebox{1.0 1.0} % Change this value to rescale the drawing.
+{
+\begin{pspicture}(0,-3.7134862)(6.353223,3.7134862)
+\rput(0.17442383,-3.4965625){\psgrid[gridwidth=0.028222222, subgridwidth=0.014111111, gridlabels=6.0pt, subgridcolor=white](0,0)(0,0)(6,7)}
+\pscircle[linecolor=black, linewidth=0.04, fillstyle=solid,fillcolor=black, dimen=outer](2.174424,2.5034375){0.2}
+\psframe[linecolor=blue, linewidth=0.04, dimen=outer](5.1744237,0.5034376)(1.1744238,-2.4965625)
+\psframe[linecolor=red, linewidth=0.04, dimen=outer](5.1744237,3.5034375)(3.174424,1.5034375)
+\end{pspicture}
+}
+

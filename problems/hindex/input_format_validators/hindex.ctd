@@ -1,0 +1,7 @@
+SET(maxn = 100000)
+SET(maxc = 1000000000)
+INT(1,maxn,n) NEWLINE
+REP(n)
+  INT(0,maxc) NEWLINE
+END
+EOF

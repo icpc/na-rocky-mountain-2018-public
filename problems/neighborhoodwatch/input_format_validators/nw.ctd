@@ -1,0 +1,10 @@
+INT(1,200000,n) SPACE INT(0,n,k) NEWLINE
+IF(k > 0)
+  REPI (i, k)
+    INT(1,n,a[i]) NEWLINE
+  END
+  REPI (i,k-1)
+    ASSERT(a[i] < a[i+1])
+  END
+END
+EOF
