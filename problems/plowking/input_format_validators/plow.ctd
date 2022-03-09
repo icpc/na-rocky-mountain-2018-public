@@ -1,5 +1,0 @@
-SET(minn = 2)
-SET(maxn = 1000000)
-INT(minn, maxn, n) SPACE
-INT(n-1, n*(n-1)/2, m) NEWLINE
-EOF

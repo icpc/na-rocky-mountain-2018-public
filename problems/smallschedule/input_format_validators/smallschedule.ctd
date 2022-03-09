@@ -1,5 +1,0 @@
-SET(maxq = 1000)
-SET(maxm = 1000000)
-SET(maxsl = 1000000)
-INT(2,maxq) SPACE INT(1,maxm) SPACE INT(0,maxsl) SPACE INT(0,maxsl) NEWLINE
-EOF
